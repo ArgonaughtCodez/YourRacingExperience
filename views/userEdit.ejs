@@ -1,0 +1,171 @@
+<% include partials/header %>
+<div >
+    <div class="modal-dialog" role="document">
+        <div class="modal-content" >
+            <div class="modal-header">
+                <h2 style="font-size: 32px;" class="modal-title text-center">User Edit</a></span></h2>
+            </div>
+            <div class="modal-body">
+                <div class="contentNewPost">
+               
+                
+                    
+                    <!-- USERNAME SET HERE -->
+                    
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="username" id="username" value="<%= userInfo.username %>" disabled>
+                    </div>
+                    
+                    <form id="regForm1" action="/userEdit1?_method=PUT" method="POST" onsubmit="return myFunctionOne()">
+                        <!-- EMAIL CHANGE HERE -->
+                        <hr>
+                        <% if(errorEmail && errorEmail.length > 0){ %>
+                            <div class="alert alert-danger" role="alert"><%= errorEmail %></div>
+                        <% } %>
+                        
+                        <div class="alert alert-danger" id="errorOne" style="display: none"  role="alert"></div>
+                        <div class="form-group">
+                            <input type="email" class="form-control" name="useremail" id="useremail"  value="<%= userInfo.userEmail %>" required >
+                        </div>
+                        
+                        <!--<div class="alert alert-danger" id="errorTwo" style="display: none"  role="alert"></div>-->
+                        <!--<div class="form-group">-->
+                        <!--    <input type="password" class="form-control" name="password" id="password"  placeholder="password" required >-->
+                        <!--</div>-->
+                        
+                        <div class="contentButtonsArea">
+                            <div class="row loginButtons">
+                                   
+                                   <button  class="btn btn-success btn-lg" >Change Email Address</button>
+                            </div>
+                        </div>
+                    </form>
+                    
+                    
+                    <form id="regForm2" action="/userEdit2?_method=PUT" method="POST" onsubmit="return myFunctionTwo()">
+                        <!-- PASSWORD CHANGE HERE -->
+                        <hr>
+                        <div class="alert alert-danger" id="errorThree" style="display: none" role="alert"></div>
+                       
+                        
+                        <div class="alert alert-danger" id="errorFour" style="display: none" role="alert"></div>
+                        <div class="form-group">
+                            <input type="password" class="form-control" name="newPass" id="newPass"  placeholder="New Password" required >
+                        </div>
+                        
+                        <div class="form-group">
+                            <input type="password" class="form-control" name="confirm_user_pass" id="confirm_user_pass"  placeholder="Confirm New Password" required >
+                        </div>
+                        <div class="contentButtonsArea">
+                            <div class="row loginButtons">
+                                   
+                                   <button  class="btn btn-success btn-lg" >Change Password</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<script type="text/javascript">
+
+function myFunctionOne() {
+    var useremail = document.getElementById("useremail").value;
+    
+    
+    var userEmailMessage = "";
+    if(useremail.length == 0){
+        userEmailMessage = "Please fill in your email address!";
+        document.getElementById("useremail").style.borderColor = "#c0392b";
+    } else {
+        var userEmailMessage = ""; 
+        document.getElementById("useremail").style.borderColor = "#ccc";
+        document.getElementById("errorOne").innerHTML = userEmailMessage;
+        document.getElementById("errorOne").style.display = "none";
+    }  
+    
+
+    
+    
+        if(userEmailMessage != ""){
+          document.getElementById("errorOne").innerHTML = userEmailMessage;
+          document.getElementById("errorOne").style.display = "block";
+        }
+
+        if( userEmailMessage != ""){
+            return false; 
+        } else {
+            return true;
+        }
+  
+}
+
+
+function myFunctionTwo() {
+    var newPass = document.getElementById("newPass").value;  
+    var confirm_user_pass = document.getElementById("confirm_user_pass").value; 
+
+
+
+    
+    
+   var userPassMessage = "";
+   if(newPass.length == 0 || confirm_user_pass == 0){
+        userPassMessage="Please fill in your new password";
+        
+        document.getElementById("newPass").style.borderColor = "#c0392b";
+        
+        
+        document.getElementById("confirm_user_pass").style.borderColor = "#c0392b";
+        
+        
+   }else if(newPass.length <= 5 || confirm_user_pass <= 5){
+        userPassMessage="Your password must be 6 characters or more!";
+        
+        document.getElementById("newPass").style.borderColor = "#c0392b";
+        
+        
+        document.getElementById("confirm_user_pass").style.borderColor = "#c0392b";
+   }else if(newPass != confirm_user_pass){
+        userPassMessage="Your passwords do not match!";
+        
+        document.getElementById("newPass").style.borderColor = "#c0392b";
+        
+        
+        document.getElementById("confirm_user_pass").style.borderColor = "#c0392b";
+        
+   }else{
+       userPassMessage="";
+        document.getElementById("newPass").style.borderColor = "#ccc";
+        
+        document.getElementById("confirm_user_pass").style.borderColor = "#ccc";
+        
+        
+        document.getElementById("errorFour").innerHTML = userPassMessage;
+           document.getElementById("errorFour").style.display = "none";
+   }
+   
+   
+
+
+       
+       if(userPassMessage != ""){
+          document.getElementById("errorFour").innerHTML = userPassMessage;
+          document.getElementById("errorFour").style.display = "block";
+       }
+    
+    if(  userPassMessage !=""){
+        return false; 
+    } else {
+        return true;
+    }
+    
+}
+
+</script>
+
+</body>
+</html>

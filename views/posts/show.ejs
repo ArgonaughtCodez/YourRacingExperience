@@ -1,0 +1,59 @@
+<% include ../partials/header %>
+
+
+<div >
+  <div class="modal-dialog postModal" role="document">
+    <div class="modal-content" >
+      <div class="postHeaderStyle modal-header">
+       <h2 class="text-center postNameHeader"><%= post.name %></h2>
+      </div>
+      <div class="modal-body">
+          <div class="outerBox" >
+              <div class="wrapper">
+                  <img src="<%=post.image %>">
+              </div>
+          </div>
+        <div class="well">
+            
+            <h2 class="postHeader modal-title text-left"><span><a href="/series/<%= post.series %>"><%= post.series %></a></span> - <a href="/season/<%= post.series %>/<%= post.year %>"><%= post.year %></a></span> - <a href="/race/<%= post.series %>/<%= post.year %>/<%= post.race %>"><%= post.race %></a></span></h2>
+            <hr>
+            <h2 class=" postHeader text-right">By <a href="/user/<%= post.author.username %>"><%= post.author.username %></a></h2>
+            <h2 class=" postHeader text-right"><%= moment(post.createdAt).fromNow() %></h2>
+            <hr>
+            <div class="descriptionArea">
+               <%- post.description %>
+            </div>
+             
+            
+        </div>
+      </div>
+      <div class="modal-footer">
+
+        <% if(currentUser && post.author.id.equals(currentUser._id) || currentUser && currentUser.isAdmin) { %>
+        <div class="row">
+          <div class="col-xs-6">
+            <a href="/post/<%=post._id %>/edit" type="button" class="postManagement btn btn-warning"> Edit Post</a>
+          </div>
+          <div class="col-xs-6">
+            <form action="/post/<%= post._id %>?_method=DELETE" method="POST">
+            <button class="postManagement btn btn-danger">DELETE POST</button>
+            
+          </form>
+          </div>
+        </div>
+          
+          
+        
+        <% } %>
+        
+        
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+
+</div>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<% include partials/header %>
+<div class="welcomeBanner">
+    <h1 class="welcomeH1 text-center"> Motorsport Reddits</h1>
+</div>
+
+    <div class="row postNewRow" style="display:flex; flex-wrap: wrap;">
+        <% if(series.length > 1) { %>
+            <% var i = series.length; %>
+            <% while (i--){ %>
+                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 postNewItem" style="margin-bottom: 10px;" >
+                        <a href=" <%=series[i].reddit_link %>" class="displayButton"><%= series[i].series_name %> </a>
+                </div>
+            <% } %>
+        <% } %>
+    </div>
+   
+</div>
+</body>
+</html>

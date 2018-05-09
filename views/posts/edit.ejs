@@ -1,0 +1,119 @@
+            <% include ../partials/headerText %>
+            <div >
+                <div class="modal-dialog postModal" role="document">
+                    <div class="modal-content" >
+                        <div class="modal-header">
+                            <h2 style="font-size: 32px;" class="modal-title text-center">Edit your post!</a></span></h2>
+                        </div>
+                        <form action="/post/<%= post._id %>?_method=PUT" method="POST"  enctype="multipart/form-data" onsubmit="return myFunction()">
+                            <div class="modal-body">
+                                <div class="contentNewPost">
+                                     <div class="alert alert-danger" id="errorOne" style="display: none"  role="alert"></div>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" name="post[name]" id="name"  value="<%= post.name %>">
+                                    </div>
+                                    <hr>
+                                    
+                                    <div class="form-group">
+                                        <label for="post[race]">Select a race :</label>
+                                        <select  class="form-control" name="post[race]">
+                                        
+                                            <% for (var i = 0; i < racesFound.length; i++){ %>
+                                                <% if(post.year === racesFound[i].year && post.race === racesFound[i].race_name){ %>
+                                                    <option selected><%= racesFound[i].year %> - <%= racesFound[i].race_name %>   </option>
+                                                <% } else {%>
+                                                    <option><%= racesFound[i].year %> - <%= racesFound[i].race_name %>   </option>
+                                                <% }%>
+                                            <% }%>
+                                            
+                                        </select>
+                                    </div>
+                                    <hr>
+
+
+                                    <div class="row">
+                                        <p>Current Image (Will be replaced by new one) :</p>
+                                        <br>
+                                        <div class="col-xs-6 col-xs-offset-3 col-md-4 col-md-offset-4">
+                                            <div class="currentPic thumbnail">
+                                                <img src="<%= post.image %>">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label for="image">Image</label>
+                                        <input type="file" id="image" name="image" accept="image/*" >
+                                    </div>
+                                    <hr> 
+                                    
+                                    <textarea name="post[description]"> <%= post.description %></textarea>
+                                </div>
+                            
+                            
+                            </div>
+                            <div class="modal-footer">
+                                    <div class="row">
+                                        <div class="col-xs-6">
+                                            <button class=" postManagement btn btn-success">Edit Post!</button>
+                                    </form>
+                                        </div>
+                                        <div class="col-xs-6">
+                                           <form action="/post/<%= post._id %>?_method=DELETE" method="POST">
+                                        <button class=" postManagement btn btn-danger">DELETE POST</button>
+                                     </form>  
+                                        </div>
+                                    </div>
+                                    
+                            </div>
+                        
+                        
+                       
+                    </div>
+                </div>
+            </div>
+        
+        
+
+        </div>
+        
+        <script type="text/javascript">
+
+function myFunction() {
+   
+    var postTitle = document.getElementById("name").value;
+    
+    
+     
+     
+     
+    var postTitleMessage = "";
+    if(postTitle.length == 0){
+        postTitleMessage = "Please fill in a title of your post!";
+        document.getElementById("name").style.borderColor = "#c0392b";
+    } else {
+        var postTitleMessage = ""; 
+        document.getElementById("name").style.borderColor = "#ccc";
+        document.getElementById("errorOne").innerHTML = postTitleMessage;
+        document.getElementById("errorOne").style.display = "none";
+    }
+    
+    
+    if(postTitleMessage != ""){
+        document.getElementById("errorOne").innerHTML = postTitleMessage;
+        document.getElementById("errorOne").style.display = "block";
+    }
+   
+    if( postTitleMessage != ""){
+        return false; 
+    } else {
+        return true;
+    }
+
+    
+    
+}
+
+</script>        
+    </body>
+</html>

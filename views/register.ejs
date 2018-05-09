@@ -1,0 +1,168 @@
+<% include partials/header %>
+<div >
+    <div class="modal-dialog" role="document">
+        <div class="modal-content" >
+            <div class="modal-header">
+                <h2 style="font-size: 32px;" class=" modal-title text-center">Register</a></span></h2>
+            </div>
+            <div class="modal-body">
+                <div class="contentNewPost">
+               
+                <form id="regForm" action="/register" method="POST" onsubmit="return myFunction()">
+                      <% if(errorUsername && errorUsername.length > 0){ %>
+                        <div class="alert alert-danger" role="alert"><%= errorUsername %></div>
+                      <% } %>
+                      
+                      
+                    <div class="alert alert-danger" id="errorOne" style="display: none"  role="alert"></div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="username" id="username" placeholder="User Name" required>
+                    </div>
+                    <hr>
+                    <% if(errorEmail && errorEmail.length > 0){ %>
+                        <div class="alert alert-danger" role="alert"><%= errorEmail %></div>
+                    <% } %>
+                    <div class="alert alert-danger" id="errorTwo" style="display: none"  role="alert"></div>
+                    <div class="form-group">
+                        <input type="email" class="form-control" name="useremail" id="useremail"  placeholder="User Email" required>
+                    </div>
+                    <hr>
+                    <div class="alert alert-danger" id="errorThree" style="display: none" role="alert"></div>
+                    <div class="form-group">
+                        <input type="password" class="form-control" name="password" id="password"  placeholder="password" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <input type="password" class="form-control" name="confirm_user_pass" id="confirm_user_pass"  placeholder="Confirm Password" required>
+                    </div>
+                    
+                    </div>
+                <div class="modal-footer">
+                    <div class="contentButtonsArea">
+                        <div class="row loginButtons">
+                               
+                               <button  class="btn btn-success btn-lg" >Register</button>
+                        </div>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<script type="text/javascript">
+
+function myFunction() {
+    var username = document.getElementById("username").value;
+
+    var useremail = document.getElementById("useremail").value;
+
+    var password = document.getElementById("password").value;
+
+    var confirm_user_pass = document.getElementById("confirm_user_pass").value;
+
+    var userNameMessage = "";
+    if(username.length == 0){
+        userNameMessage = "Please fill in your Username!";
+        document.getElementById("username").style.borderColor = "#c0392b";
+    } else if(username.length <= 4){
+        userNameMessage = "Your username must be 4 characters or more!";
+        document.getElementById("username").style.borderColor = "#c0392b";
+    } else {
+        var userNameMessage = ""; 
+        document.getElementById("username").style.borderColor = "#ccc";
+        
+        document.getElementById("errorOne").innerHTML = userNameMessage;
+          document.getElementById("errorOne").style.display = "none";
+    }
+    
+    
+    var userEmailMessage = "";
+    if(useremail.length == 0){
+        userEmailMessage = "Please fill in your email address!";
+        document.getElementById("useremail").style.borderColor = "#c0392b";
+    } else {
+        var userEmailMessage = ""; 
+        document.getElementById("useremail").style.borderColor = "#ccc";
+        
+         document.getElementById("errorTwo").innerHTML = userEmailMessage;
+          document.getElementById("errorTwo").style.display = "none";
+        
+        
+    }
+    
+    
+   var userPassMessage = "";
+   if(password.length == 0 || confirm_user_pass == 0){
+        userPassMessage="Please fill in your password";
+        
+        document.getElementById("password").style.borderColor = "#c0392b";
+        
+        
+        document.getElementById("confirm_user_pass").style.borderColor = "#c0392b";
+        
+        
+   }else if(password.length <= 5 || confirm_user_pass <= 5){
+        userPassMessage="Your password must be 6 characters or more!";
+        
+        document.getElementById("password").style.borderColor = "#c0392b";
+        
+        
+        document.getElementById("confirm_user_pass").style.borderColor = "#c0392b";
+   }else if(password != confirm_user_pass){
+        userPassMessage="Your passwords do not match!";
+        
+        document.getElementById("password").style.borderColor = "#c0392b";
+        
+        
+        document.getElementById("confirm_user_pass").style.borderColor = "#c0392b";
+        
+   }else{
+       userPassMessage="";
+        document.getElementById("password").style.borderColor = "#ccc";
+        
+        document.getElementById("confirm_user_pass").style.borderColor = "#ccc";
+        
+        
+        document.getElementById("errorThree").innerHTML = userPassMessage;
+           document.getElementById("errorThree").style.display = "none";
+   }
+
+
+
+       if(userEmailMessage != ""){
+          document.getElementById("errorTwo").innerHTML = userEmailMessage;
+          document.getElementById("errorTwo").style.display = "block";
+       }
+       
+       if(userNameMessage != ""){
+          document.getElementById("errorOne").innerHTML = userNameMessage;
+          document.getElementById("errorOne").style.display = "block";
+       }
+       
+       if(userPassMessage != ""){
+          document.getElementById("errorThree").innerHTML = userPassMessage;
+          document.getElementById("errorThree").style.display = "block";
+       }
+    
+    if( userEmailMessage != "" || userNameMessage != "" || userPassMessage !=""){
+        return false; 
+    } else {
+        return true;
+    }
+  
+        
+        
+        
+
+
+    
+    
+}
+
+</script>
+
+</body>
+</html>

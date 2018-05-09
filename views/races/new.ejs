@@ -1,0 +1,17 @@
+<% include ../partials/header %>
+<h1 class="postNewHeader">Race Management - Step 1 : Select Series</h1>
+
+    <div class="row postNewRow" style="display:flex; flex-wrap: wrap;">
+        <% if(series.length > 1) { %>
+            <% var i = series.length; %>
+            <% while (i--){ %>
+                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 postNewItem" style="margin-bottom: 10px;" >
+                        <a href="/admin/race/<%=series[i].series_short %>" class="Misc-Button postNewItemLink"><%= series[i].series_name %> </a>
+                </div>
+            <% } %>
+        <% } %>
+    </div>
+   
+</div>
+</body>
+</html>

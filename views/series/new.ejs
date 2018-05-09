@@ -1,0 +1,80 @@
+<% include ../partials/header %>
+
+<form class="seriesEditForm" action="/series" method="POST">
+    <h2> Create a new Series</h2>
+
+    <div class="form-group">
+        <label for="series_name">Series Name</label>
+        <input type="text" class="form-control" id="series_name" name="series_name"  placeholder="Series Name">
+    </div>
+
+    <div class="form-group">
+        <label for="series_short">Series Short</label>
+        <input type="text" class="form-control" id="series_short" name="series_short"  placeholder="series_short">
+    </div>
+    
+    <div class="form-group">
+        <label for="reddit_subscribers">Reddit Subscribers</label>
+        <input type="text" class="form-control" id="reddit_subscribers" name="reddit_subscribers"  placeholder="reddit_subscribers">
+    </div>
+
+    <div class="form-group">
+        <label for="reddit_link">Reddit Link</label>
+        <input type="text" class="form-control" id="reddit_link" name="reddit_link"  placeholder="reddit_link">
+    </div>
+    
+    <div class="form-group">
+        <label for="show">Visible :</label>
+        <select class="form-control" id="show" name="show">
+            <option>false</option>
+            <option>true</option>
+            
+        </select>
+    </div>
+    
+    <button class="btn btn-success btn-lg">Add a Series!</button>
+</form>
+
+<hr>
+
+<h2 class="seriesEditH2"> Existing Series</h2>
+<div class="row postNewRow" style="display:flex; flex-wrap: wrap;">
+        <% if(series.length > 1) { %>
+            <% var i = series.length; %>
+            <% while (i--){ %>
+                <form class="seriesEditForm" action="/admin/series/<%= series[i]._id %>?_method=PUT" method="POST"  >
+                    
+                    <div class="col-lg-12 col-xs-12 " style="margin-bottom: 10px;" >
+                        <h2> <%= series[i].series_name %></h2>
+                        <div class="form-group">
+                            <label for="reddit_subscribers">Reddit Subscribers</label>
+                            <input type="text" class="form-control" name="reddit_subscribers" id="reddit_subscribers" value="<%= series[i].reddit_subscribers %>">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="link">Reddit Link</label>
+                            <input type="text" class="form-control" name="link"  id="link" value="<%= series[i].reddit_link %>">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="show">Visible :</label>
+                            <select class="form-control" id="show" name="show">
+                                
+                                <% if(series[i].show === true){ %>
+                                    <option selected>true</option>
+                                    <option>false</option>
+                                <% } else if(series[i].show === false){ %>
+                                    <option>true</option>
+                                    <option selected>false</option>
+                                <% } %>
+                                
+                            </select>
+                        </div>
+                        
+                        <button class="btn btn-success btn-lg">Edit Series!</button>
+                    </div>
+                </form>
+                
+            <% } %>
+        <% } %>
+    </div>

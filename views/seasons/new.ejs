@@ -1,0 +1,102 @@
+<% include ../partials/header %>
+
+
+<form   class="seriesEditForm" action="/seasons" method="POST">
+    <h2> Create a new Season</h2>
+    
+    <div class="form-group">
+    <label for="serie">Series Name</label>
+        <select  class="form-control" name="series">
+            <% if(series.length > 1) { %>
+                <% var i = series.length; %>
+                <% while (i--){ %>
+        
+                    <option><%= series[i].series_short %></option>
+        
+                <% }%>
+            <% }%>
+        </select>
+    </div>
+    
+    <div class="form-group">
+        <label for="series_name">Season Year</label>
+        <input type="text" class="form-control" id="season_year" name="season_year"  placeholder="season_year">
+    </div>
+    
+     <div class="form-group">
+        <label for="season_order">Season Order</label>
+        <input type="number" class="form-control" id="season_order" name="season_order"  placeholder="season_order">
+    </div>
+    
+    <div class="form-group">
+        <label for="show">Visible :</label>
+        <select class="form-control" id="show" name="show">
+            <option>false</option>
+            <option>true</option>
+            
+        </select>
+    </div>
+    
+    <button class="btn btn-success btn-lg">Add a Season!</button>
+</form>
+
+<hr>
+
+<h2 class="seriesEditH2"> Existing Series</h2>
+<div class="row postNewRow" style="display:flex; flex-wrap: wrap;">
+        <% if(series.length > 1) { %>
+            <% var i = series.length; %>
+                <% while (i--){ %>
+                    <div class="seriesEditForm">
+                        <h2><%= series[i].series_name %></h2>
+                        <% if(seasons.length > 1){ %>
+                            <% var x = seasons.length; %>
+                            <% while (x--){ %>
+                                <% if(seasons[x].series === series[i].series_short){ %>
+                                       
+                                <form style="height: auto;"  action="/admin/season/<%= seasons[x]._id %>?_method=PUT" method="POST"  >
+                                    <div class="col-lg-12 col-xs-12 " style="border: 2px solid black; margin-bottom: 20px; padding: 10px; border-radius: 10px;" style="margin-bottom: 10px; " >
+                                        <h2> <%= seasons[x].season_year %></h2>
+                                        
+                                        <div class="form-group">
+                                            <label for="season_order">Season Order</label>
+                                            <input type="text" class="form-control" name="season_order" id="season_order" value="<%= seasons[x].season_order %>">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="show">Visible :</label>
+                                            <select class="form-control" id="show" name="show">
+                                                
+                                                <% if(seasons[x].show === true){ %>
+                                                    <option selected>true</option>
+                                                    <option>false</option>
+                                                <% } else if(seasons[x].show === false){ %>
+                                                    <option>true</option>
+                                                    <option selected>false</option>
+                                                <% } %>
+                                                
+                                            </select>
+                                        </div>
+                                        
+                                        
+                                        <button class="btn btn-success btn-lg">Edit Season!</button>
+                                    </div>
+                                </form>  
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                <% } %>
+                            <% } %>
+                        <% } %>
+                    </div>
+                <% } %>
+            <% } %>
+    </div>
+    
+    

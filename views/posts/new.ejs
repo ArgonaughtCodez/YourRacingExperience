@@ -1,0 +1,115 @@
+            <% include ../partials/headerText %>
+            
+            <div >
+                <div class="modal-dialog postModal"  role="document">
+                    <div class="modal-content" >
+                        <div class="modal-header">
+                        <h2 style="font-size: 32px;" class="modal-title text-center">Create a new post!</a></span></h2>
+                        </div>
+                        <form action="/post" method="POST" enctype="multipart/form-data" onsubmit="return myFunction()">
+                            <div class="modal-body">
+                                <div class="contentNewPost">
+                                    <div class="alert alert-danger" id="errorOne" style="display: none"  role="alert"></div>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" id="name" name="post[name]"  placeholder="Post Title :">
+                                    </div>
+                                    <hr>
+                                    
+                                    <div class="form-group">
+                                        <label for="race">Select a race :</label>
+                                        <select  class="form-control" id="race" name="post[race]" required>
+                                            <% for (var i = 0; i < racesFound.length; i++){ %>
+                                            <option><%= racesFound[i].year %> - <%= racesFound[i].race_name %>   </option>
+                                            <% }%>
+                                        </select>
+                                    </div>
+                                    <hr>
+                                    
+                                     <div class="alert alert-danger" id="errorTwo" style="display: none"  role="alert"></div>
+                   
+                                    
+                                    <div  class="form-group">
+                                        <label for="image">Image</label>
+                                        <input type="file" id="image" name="image" accept="image/*" >
+                                    </div>
+                                    
+                                    <hr>
+                                    <input type="hidden" name="post[series]" value="<%=seriesFound[0].series_short %>">
+                                    <textarea name="post[description]"></textarea> 
+                                </div>
+                            </div>
+                            
+                            <div class="modal-footer">
+                                <div class="contentButtonsArea">
+                                    <button class="btn btn-success btn-lg">Create Post</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        
+        </div>
+        
+        
+<script type="text/javascript">
+
+function myFunction() {
+   
+  
+    var postTitle = document.getElementById("name").value;
+    var postImage = document.getElementById("image").value;
+    
+    
+     
+     
+     
+    var postTitleMessage = "";
+    if(postTitle.length == 0){
+        postTitleMessage = "Please fill in a title of your post!";
+        document.getElementById("name").style.borderColor = "#c0392b";
+    } else {
+        var postTitleMessage = ""; 
+        document.getElementById("name").style.borderColor = "#ccc";
+        document.getElementById("errorOne").innerHTML = postTitleMessage;
+        document.getElementById("errorOne").style.display = "none";
+    }
+    
+    
+    if(postTitleMessage != ""){
+        document.getElementById("errorOne").innerHTML = postTitleMessage;
+        document.getElementById("errorOne").style.display = "block";
+    }
+   
+    var postImageMessage = "";
+    if(postImage.length == 0){
+        postImageMessage = "Please insert an image!";
+        document.getElementById("image").style.borderColor = "#c0392b";
+    } else {
+        var postImageMessage = ""; 
+        document.getElementById("image").style.borderColor = "#ccc";
+        document.getElementById("errorTwo").innerHTML = postImageMessage;
+        document.getElementById("errorTwo").style.display = "none";
+    }
+    
+    
+    if(postImageMessage != ""){
+        document.getElementById("errorTwo").innerHTML = postImageMessage;
+        document.getElementById("errorTwo").style.display = "block";
+    }
+    
+    if( postTitleMessage != "" || postImageMessage != ""){
+        return false; 
+    } else {
+        return true;
+    }
+
+    
+    
+}
+
+</script>        
+        
+        
+    </body>
+</html>

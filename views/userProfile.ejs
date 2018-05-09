@@ -1,0 +1,39 @@
+<% include partials/header %>
+
+<div class="welcomeBanner">
+    <h1 class="welcomeH1 text-center"> Welcome to Your<span>Racing</span>Experience</h1>
+</div>
+
+<div class="seasonBanner">
+  <h2 class="text-center welcomeH1"> <%= tabName %></h2>
+</div>
+
+<div class="errorDiv" style="width: 90%; margin: 10px auto; ">
+  <% if(error && error.length > 0){ %>
+    <div class="alert alert-danger" role="alert"><%= error %></div>
+  <% } %>
+  
+  <% if(success && success.length > 0){ %>
+    <div class="alert alert-success" role="alert"><%= success %></div>
+  <% } %>
+</div>
+  
+
+<div class="row" style="display:flex; flex-wrap: wrap;">
+
+<% for (var i = posts.length; i--;){ %>
+  
+            <a href="/post/<%= posts[i]._id %>" type="button" class="thumbnail postLinks"
+                      style="background:url(<%= posts[i].resizedImage %>); 
+                      background-repeat: no-repeat;
+                      background-position: center;
+                      background-size:cover;
+                      border-radius: 0 !important;
+                      outline: 0 !important;"
+            ></a>
+<% }%>
+</div>
+
+</div>
+</body>
+</html>

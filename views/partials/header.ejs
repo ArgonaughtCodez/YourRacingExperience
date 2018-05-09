@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title><% if(sideBarVariable === 0){ %>
+                <% if (tabName.length > 0) { %>
+                    <%= tabName %> |  YourRacingExp
+                <% } else { %>
+                    YourRacingExp
+                <% } %>
+                
+                
+              <% } else if(sideBarVariable === 1) { %>
+                   <%= tabName %> | Your<%= series[0].series_short %>Experience
+              <% } %>
+        </title>
+          <meta name="description" content="<%= description %>">
+          <meta name="viewport" content="width=device-width, initial-scale=1">
+          <meta name="keywords" content="<%= keywords %>">
+          <link href="https://fonts.googleapis.com/css?family=Raleway:400,500" rel="stylesheet">
+          <meta name="author" content="Douglas Chambers">
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <link href="/stylesheets/main.css" rel="stylesheet">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+
+    </head>
+    
+     <body>
+    <div class="content-area">
+      <div class="row row-eq-height">
+        <div class="col-xs-3">
+        
+   <!-- This is the Side Menu Page.
+     The div starts here with .side-menu
+    --> 
+    <div class="side-menu">
+    
+        <div class="header">
+          <div class="header-name">
+            <p class="header-name-text">
+              
+               <% if(sideBarVariable === 0){ %>
+                Your<b>Racing</b>Experience
+              <% } else if(sideBarVariable === 1) { %>
+            Your<b><%= series[0].series_short %></b>Experience<% } %>
+            </p>
+          </div>
+        </div>
+      
+        <!-- Home Button taking you to the home page -->
+        <a href="/" class="Home-Button"> Home </a>
+        
+        <% if(sideBarVariable === 0){ %>
+          <% if(series.length > 1) { %>
+            <% var i = series.length %>
+            <% while (i--){ %>
+                <a href="/series/<%= series[i].series_short %>" class="Series-Button"><%= series[i].series_name %> </a>
+            <% } %>
+          <% } %>
+          
+        <% } else if(sideBarVariable === 1) { %>
+        <a href="/series/<%= series[0].series_short %>" class="Series-Button"> All <%= series[0].series_short %> Posts </a>
+        <button class="accordion">Current Season : 
+          <% if(seasons.length >= 1) { %>
+            <% var x = seasons.length - 1%>
+          
+            <%= seasons[x].season_year %>
+          <% }  %>
+        </button>
+        <div class='panel'>
+          <% var i = races.length %>
+          <% while (i--){ %>
+            <% if( races[i].year === seasons[x].season_year){ %>
+                <a href='/race/<%= series[0].series_short %>/<%= seasons[x].season_year  %>/<%= races[i].race_name %>' class='list-item'><%= races[i].race_name %></a>
+            <% } %>
+          <% } %>
+        </div>
+        
+        <button class="accordion">Seasons </button>
+        <div class='panel'>
+          <% var i = seasons.length %>
+          <% while (i--){ %>
+            
+                <a href='/season/<%= series[0].series_short %>/<%= seasons[i].season_year  %>' class='list-item'><%=seasons[i].season_year %></a>
+            
+          <% } %>
+        </div>
+        
+        
+        <% } %>
+      
+        
+        <% if(!currentUser){ %>
+          <a href="/login" class="Misc-Button grpOne"> Login </a>
+          <a href="/register" class="Misc-Button grpOne"> Register </a>
+        
+        <% } else { %>
+          <a href="/user/<%= currentUser.username %>" class="Misc-Button grpOne">Logged in as : <%= currentUser.username %> </a>
+          <a href="/post/new" class="Misc-Button grpOne"> Make a Post </a>
+        <% if(usersPosts.length > 0){ %>
+          <button class="accordion2 grpOne">Edit Posts </button>
+        <div class='panel'>
+        
+          
+          <% var i = usersPosts.length %>
+          <% while (i--){ %>
+              <a  class='list-item' href="/post/<%= usersPosts[i]._id %>/edit"><%= usersPosts[i].name %></a>
+          <% } %> 
+       
+        </div>
+         <% } %>
+         <a href="/userEdit" class="Misc-Button grpOne"> Edit Profile </a>
+          <a href="/logout" class="Misc-Button grpTwo"> Logout </a>
+        <% } %>
+        
+        <a href="/reddit" class="Misc-Button grpOne"> Reddit Links </a>
+        <% if (currentUser && currentUser.isAdmin) { %>
+          <a href="/admin/series" class="Admin-Button grpFour"> Series </a>
+          <a href="/admin/season" class="Admin-Button grpFour"> Season </a>
+          <a href="/admin/race" class="Admin-Button grpFour"> Race </a>
+          <a href="/admin/users" class="Admin-Button grpFour"> Users </a>
+        
+        <% } %>
+    
+    
+
+    
+                            
+    <!-- Closing part of the div -->
+    </div>
+</div>
+
+<div class="col-xs-9">
+
+
+
+<div id="mySidenav" class="sidenav">
+
+
+  <a href="javascript:void(0)" class="closebtn " onclick="closeNav()">&times;</a>
+        <!-- Home Button taking you to the home page -->
+        <a href="/" class="Home-Button"> Home </a>
+        
+        <% if(sideBarVariable === 0){ %>
+          <% if(series.length > 1) { %>
+            <% var i = series.length %>
+            <% while (i--){ %>
+                <a href="/series/<%= series[i].series_short %>" class="Series-Button"><%= series[i].series_name %> </a>
+            <% } %>
+          <% } %>
+          
+        <% } else if(sideBarVariable === 1) { %>
+        <a href="/series/<%= series[0].series_short %>" class="Series-Button"> All <%= series[0].series_short %> Posts </a>
+        <button class="accordion">Current Season : 
+          <% if(seasons.length >= 1) { %>
+            <% var x = seasons.length - 1%>
+          
+            <%= seasons[x].season_year %>
+          <% }  %>
+        </button>
+        <div class='panel'>
+          <% var i = races.length %>
+          <% while (i--){ %>
+            <% if( races[i].year === seasons[x].season_year){ %>
+                <a href='/race/<%= series[0].series_short %>/<%= seasons[x].season_year  %>/<%= races[i].race_name %>' class='list-item'><%= races[i].race_name %></a>
+            <% } %>
+          <% } %>
+        </div>
+        
+        <button class="accordion">Seasons </button>
+        <div class='panel'>
+          <% var i = seasons.length %>
+          <% while (i--){ %>
+            
+                <a href='/season/<%= series[0].series_short %>/<%= seasons[i].season_year  %>' class='list-item'><%=seasons[i].season_year %></a>
+            
+          <% } %>
+        </div>
+        
+        
+        <% } %>
+      
+        
+        <% if(!currentUser){ %>
+          <a href="/login" class="Misc-Button grpOne"> Login </a>
+          <a href="/register" class="Misc-Button grpOne"> Register </a>
+        
+        <% } else { %>
+          <a href="/user/<%= currentUser.username %>" class="Misc-Button grpOne">Logged in as : <%= currentUser.username %> </a>
+          <a href="/post/new" class="Misc-Button grpOne"> Make a Post </a>
+        <% if(usersPosts.length > 0){ %>
+          <button class="accordion2 grpOne">Edit Posts </button>
+        <div class='panel'>
+        
+          
+          <% var i = usersPosts.length %>
+          <% while (i--){ %>
+              <a  class='list-item' href="/post/<%= usersPosts[i]._id %>/edit"><%= usersPosts[i].name %></a>
+          <% } %> 
+       
+        </div>
+         <% } %>
+         <a href="/userEdit" class="Misc-Button grpOne"> Edit Profile </a>
+          <a href="/logout" class="Misc-Button grpTwo"> Logout </a>
+        <% } %>
+        
+        <a href="/reddit" class="Misc-Button grpOne"> Reddit Links </a>
+        <% if (currentUser && currentUser.isAdmin) { %>
+          <a href="/admin/series" class="Admin-Button grpFour"> Series </a>
+          <a href="/admin/season" class="Admin-Button grpFour"> Season </a>
+          <a href="/admin/race" class="Admin-Button grpFour"> Race </a>
+          <a href="/admin/users" class="Admin-Button grpFour"> Users </a>
+        
+        <% } %>
+
+</div>
+
+<script>
+function openNav() {
+    document.getElementById("mySidenav").style.width = "100%";
+    document.documentElement.style.overflow = 'hidden';  // firefox, chrome
+    document.body.scroll = "no"; // ie only
+}
+
+function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+    document.documentElement.style.overflow = 'auto';  // firefox, chrome
+    document.body.scroll = "yes"; // ie only
+}
+
+
+</script>
+
+    <!-- Accordian Script here -->
+    <script>
+    var acc = document.getElementsByClassName("accordion");
+    var i;
+    
+    for (i = 0; i < acc.length; i++) {
+      acc[i].onclick = function() {
+        this.classList.toggle("active");
+        var panel = this.nextElementSibling;
+        if (panel.style.maxHeight){
+          panel.style.maxHeight = null;
+        } else {
+          panel.style.maxHeight = panel.scrollHeight + "px";
+        } 
+      }
+    } 
+    </script>
+    
+    <script>
+    var acc = document.getElementsByClassName("accordion2");
+    var i;
+    
+    for (i = 0; i < acc.length; i++) {
+      acc[i].onclick = function() {
+        this.classList.toggle("active");
+        var panel = this.nextElementSibling;
+        if (panel.style.maxHeight){
+          panel.style.maxHeight = null;
+        } else {
+          panel.style.maxHeight = panel.scrollHeight + "px";
+        } 
+      }
+    } 
+    </script>
+
+              <div class="mobileHeader">
+                <div class="row">
+                  <div class="col-xs-8">
+                      <% if(sideBarVariable === 0){ %>
+                        Your<b>Racing</b>Experience
+                      <% } else if(sideBarVariable === 1) { %>
+                        Your<b><%= series[0].series_short %></b>Experience
+                      <% } %>
+                  </div>
+                  <div class="col-xs-4">
+                    <span class="openButton" style="cursor:pointer" onclick="openNav()">&#9776;</span>
+                  </div>
+                </div>
+              </div>
+             
+

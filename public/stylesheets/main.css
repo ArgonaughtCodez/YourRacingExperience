@@ -1,0 +1,1258 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/***************************************
+****************************************
+* SIDE BAR STYLING
+****************************************
+***************************************/
+
+body{
+  font-family: 'Raleway', sans-serif;
+  /*font-family: Arial;*/
+  color:  #333;
+  background-color: #7f8c8d;
+  font-weight: 500;
+}
+        
+.row{
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  width: 100%;
+}
+        
+.row-eq-height {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display:         flex;
+}
+        
+.col-xs-3{
+  padding: 0 !important;
+  width: 250px;
+  background-color: #1f232b;
+}
+        
+.col-xs-9{
+    width: -webkit-calc(100% - 250px);
+    width:    -moz-calc(100% - 250px);
+    width:         calc(100% - 250px);
+    padding: 0 !important;
+    background-color: #2f3540;
+    min-height: 100vh;
+}
+
+        
+/***************************************************
+ ***************************Header******************
+ **************************************************/
+.header{
+  display: flex;
+  height: 49px;
+      position: fixed; /* Set the navbar to fixed position */
+    top: 0; /* Position the navbar at the top of the page */
+}
+
+.header-name{
+  width: 250px;
+  height: 100%;
+  float: left;
+  background-color: #1f232b;
+}
+
+.header-name b{
+  font-weight: 700;
+  padding: 2px;
+  color: #e74c3c;
+}
+
+.header-name-text{
+  font-size: 20px;
+  text-align: center;
+  color:    #f5f6fa;
+  padding-top: 15px;
+}
+
+.header-rest{
+  display: none;
+}
+            
+            
+/***************************************************
+ *********************Nav Bar***********************
+ **************************************************/
+
+
+
+
+.accordion {
+    cursor: pointer;
+    text-align: left;
+    border: none;
+    width: 100%;
+    transition: 0.4s;
+    display: block;
+    text-decoration: none;
+        background-color: #353b48;
+    color: #f5f6fa;
+    padding: 6px !important;
+    padding-top: 0px !important;
+    font-size: 16px;
+    height: 45px;
+        -webkit-transition-property: none;
+-moz-transition-property: none;
+-o-transition-property: none;
+transition-property: none;
+}
+
+button.accordion.active {
+    background-color: #e74c3c;
+    color: #fff;
+}
+
+.accordion:hover {
+  background-color: #e74c3c !important;
+  color: #fff !important;
+  text-decoration: none;
+  -webkit-transition-property: none;
+  -moz-transition-property: none;
+  -o-transition-property: none;
+  transition-property: none;
+
+}
+
+button.accordion:after {
+    content: '\002B';
+    font-weight: bold;
+    float: right;
+    margin-left: 5px;
+    
+}
+
+button.accordion.active:after {
+    content: "\2212";
+}
+
+
+div.panel {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+}
+
+.panel{
+  border: none !important;
+  margin-bottom: 0px;
+  border-radius: 0;
+}
+
+.side-menu{
+  width: 250px;
+    padding: 0 !important;
+    vertical-align:top;
+    background-color: #fff;
+    color: #000;
+}
+
+.list-item-ul{
+  margin: 0px;
+  padding: 0 !important;
+}
+
+.list-item{
+    font-size: 14px;
+    width: 100%;
+    display: block;
+    padding: 12px;
+    text-decoration: none;
+    background-color: #494e5a;
+    color: #f5f6fa;
+}
+
+.list-item:hover{
+    background-color: #eee;
+    color: #e74c3c;
+    text-decoration: none;
+}
+
+
+.list-item:focus{
+      background-color: #eee;
+    color: #e74c3c;
+    text-decoration: none;
+}
+
+.list-item:active{
+        background-color: #eee;
+    color: #e74c3c;
+    text-decoration: none;
+}
+
+.Home-Button{
+    margin-top: 49px;
+    display: block;
+    height: 45px !important;  
+    text-decoration: none;
+    background-color: #353b48;
+    color: #f5f6fa;
+    padding: 6px !important;
+    font-size: 16px;  
+    padding-top: 10px !important;
+}
+
+.Home-Button:hover{
+    background-color: #eee;
+    color: #e74c3c;
+    text-decoration: none;
+    
+}
+
+.Home-Button:focus{
+    background-color: #eee;
+    color: #e74c3c;
+    text-decoration: none;
+}
+
+.Misc-Button{
+    display: block;
+    height: 45px !important;  
+    text-decoration: none;
+    background-color: #2a2f39;
+    color: #f5f6fa;
+    padding: 6px !important;
+    font-size: 16px;  
+    padding-top: 10px !important;
+}
+
+.Misc-Button:hover{
+    background-color: #eee;
+    color: #e74c3c;
+    text-decoration: none;
+}
+
+.Misc-Button:focus{
+    background-color: #eee;
+    color: #e74c3c;
+    text-decoration: none;
+}
+
+.Misc-Button:visited{
+
+}
+
+.Misc-Button:active{
+    background-color: #eee;
+    color: #e74c3c;
+    text-decoration: none;
+}
+
+
+/**********************************
+**********************************/
+.Series-Button{
+    display: block;
+    height: 45px !important;  
+    text-decoration: none;
+    background-color: #353b48;
+    color: #f5f6fa;
+    padding: 6px !important;
+    font-size: 16px;  
+    padding-top: 10px !important;
+}
+
+.Series-Button:hover{
+    background-color: #eee;
+    color: #e74c3c;
+    text-decoration: none;
+}
+
+.Series-Button:focus{
+    background-color: #eee;
+    color: #e74c3c;
+    text-decoration: none;
+}
+
+.Series-Button:visited{
+
+}
+
+.Series-Button:active{
+    background-color: #eee;
+    color: #e74c3c;
+    text-decoration: none;
+}
+
+.Admin-Button{
+    display: block;
+    height: 45px !important;  
+    text-decoration: none;
+    background-color: #e74c3c;
+    color: #f5f6fa;
+    padding: 6px !important;
+    font-size: 16px;  
+    padding-top: 10px !important;
+}
+
+.Admin-Button:hover{
+    background-color: #eee;
+    color: #e74c3c;
+    text-decoration: none;
+}
+
+.Admin-Button:focus{
+
+}
+
+.Admin-Button:visited{
+
+}
+
+.Admin-Button:active{
+
+}
+
+
+.accordion2 {
+    cursor: pointer;
+    text-align: left;
+    border: none;
+    width: 100%;
+    transition: 0.4s;
+    display: block;
+    text-decoration: none;
+     background-color: #2a2f39;
+    color: #f5f6fa;
+    padding: 6px !important;
+    padding-top: 0px !important;
+    font-size: 16px;
+    height: 45px;    
+    -webkit-transition-property: none;
+-moz-transition-property: none;
+-o-transition-property: none;
+transition-property: none;
+}
+
+button.accordion2.active {
+    background-color: #e74c3c;
+    color: #fff;
+}
+
+.accordion2:hover {
+    background-color: #e74c3c !important;
+    color: #fff !important;
+    text-decoration: none;
+        -webkit-transition-property: none;
+-moz-transition-property: none;
+-o-transition-property: none;
+transition-property: none;
+
+}
+
+button.accordion2:after {
+    content: '\002B';
+    font-weight: bold;
+    float: right;
+    margin-left: 5px;
+    
+}
+
+button.accordion2.active:after {
+    content: "\2212";
+}
+button:focus {outline:0;}
+
+
+
+/*******************************************
+*
+*******************************************/
+.modal-body{
+    padding: 0;
+}
+.outerBox {
+  width: 95%; /* just set a width you like*/
+  margin: 0 2.5%;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  background-color: #eee;
+}
+/* make the ratio 4*3 (by 100% of width /75% of width). use any ratio you'd like to */
+.wrapper { 
+  width: 100%;/* % of width */
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  padding-top: 56.25%; /* the % of padding will calculate by width */
+  position:relative; /* as it childern's(img here) position's anchor */ 
+}
+.wrapper img {
+  /* make the image inside the padding space */
+  position:absolute;
+  top:0;
+  bottom:0; 
+  left:0; 
+  right:0;
+  /* make sure the image will not over the division */
+  max-height:100%;
+  max-width:100%;
+  /* center the image */
+  display:block; 
+  margin: auto;
+}
+
+.modal-body .well{
+  width: 95%;
+  margin: 0 auto;
+  margin-bottom: 20px;
+  border-top: 0;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+/*******************************************
+* POST CATEGORY SELECT PAGE /post/new
+*******************************************/
+.postNewHeader{
+  text-align: center;
+  font-size: 36px;
+  color: #fff;
+  padding-top: 15px;
+}
+
+.postNewRow{
+  margin-top: 15px;
+}
+
+.postNewItemLink{
+  border-radius: 5px;
+  box-shadow: 2px 5px #2f2f2f;
+}
+
+
+.contentNewPost{
+ width: 85%;
+ margin: 10px auto;
+}
+
+.modal-footer{
+  padding: 0 !important;
+}
+
+.contentButtonsArea{
+  width: 85%;
+ margin: 10px auto;
+}
+
+
+/*******************************************
+* POSTS being loaded
+*******************************************/
+.postLinks{
+  height: 290px; 
+  width: 25%; 
+  border: 1px solid #333; 
+  margin: 0; 
+  border-radius: 0 !important; 
+  outline: 0 !important;
+  padding: 0;
+}
+.imageHolder {
+  height: 100%;
+  display:flex;
+  align-item: center;
+  overflow: hidden;
+}
+.postLinks img{
+  height: 100%;
+  align-self: center;
+  margin-left: -10%;
+}
+
+/***********************************
+**********************************/
+
+.loginButtons a{
+  width: 100%;
+  margin-left: 0 !important;
+  margin-bottom: 5px!important;
+}
+
+.loginButtons button{
+  width: 100%;
+  margin-bottom: 5px;
+}
+
+button{
+  outline: none !important;
+}
+
+
+/***********************************
+**********************************/
+.welcomeBanner{
+  border-bottom: 4px solid white;
+  box-shadow: 0 4px 0px 0 rgba(0, 0, 0, 0.2), 0 6px 0px 0 rgba(0, 0, 0, 0.19);
+  margin-bottom: 20px;
+}
+
+.seasonBanner{
+  border-bottom: 4px solid white;
+  box-shadow: 0 4px 0px 0 rgba(0, 0, 0, 0.2), 0 6px 0px 0 rgba(0, 0, 0, 0.19);
+  margin-bottom: 20px;
+}
+
+.welcomeH1{
+  font-size: 36px;
+  color: white;
+  min-height: 50px;
+  line-height: 42px;
+  padding-top: 4px;
+  
+} 
+
+.welcomeH1 span{
+  color: #e74c3c;
+}
+
+.seasonSelector{
+  width: 50%;
+  margin: 10px auto;
+  height: 48px; 
+  font-size: 24px;
+}
+
+.welcomeBanner p{
+ font-size: 30px;
+ line-height: 36px;
+ margin-bottom: 10px;
+ color: #fff;
+}
+
+/*********************************************/
+.seasonButtonHolder{
+  padding: 10px;
+    border-bottom: 4px solid white;
+  box-shadow: 0 4px 0px 0 rgba(0, 0, 0, 0.2), 0 6px 0px 0 rgba(0, 0, 0, 0.19);
+  margin-bottom: 20px;
+}
+
+.seasonButton{
+  width: 12.5%;
+  height: 50px;
+  border: 1px solid #CCC;
+  background-color: #fff;
+  font-size: 24px;
+  line-height: 30px;
+  color: black;
+  padding-top: 10px;
+}
+
+.seasonButton:hover{
+  background-color: #eee;
+  color: #e74c3c;
+  text-decoration: none;
+}
+
+.seasonButton:active, .seasonButton:focus{
+  text-decoration: none;
+  color: black;
+}
+
+.activeSeason{
+  background-color: #e74c3c;
+  color: black;
+}
+
+
+/****************************************
+****************************************/
+
+.seriesEditForm{
+  width: 95%;
+  background-color: #fff;
+  margin: 10px auto;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0,0,0,.5);
+}
+
+.seriesEditForm h2{
+  text-align: center;
+  font-size: 30px;
+  line-height: 36px;
+}
+
+.seriesEditH2{
+  text-align: center;
+  font-size: 30px;
+  line-height: 36px;
+  color: white;
+}
+
+.racesForm{
+  font-size: 16px;
+}
+
+.loginButtons .btn-warning{
+  background-color: #e74c3c !important;
+}
+
+.loginButtons .btn-warning:hover{
+  background-color: #c0392b !important;
+}
+
+
+.postManagement{
+  width: 100%;
+  margin: 10px auto;
+}
+
+/*******************************/
+/*POST SHOW PAGE ***************/
+.postHeaderStyle{
+  margin-bottom: 20px;
+}
+
+.postNameHeader{
+  font-size: 32px;
+  color: #353b48;
+}
+
+.displayButton{
+  display: block;
+  height: 75px !important;  
+  text-decoration: none;
+  background-color: #4b5365;
+  color: #f5f6fa;
+  padding: 6px !important;
+  margin-top: 20px;
+  font-size: 16px;  
+  padding-top: 10px !important;
+  border-radius: 5px;
+  box-shadow:  5px 15px #e74c3c;
+}
+
+.displayButton:hover, .displayButton:active, .displayButton:focus{
+  background-color: #f5f6fa;
+  color: #e74c3c;
+  box-shadow:  5px 15px #e74c3c;
+  text-decoration: none;
+}
+
+.postHeader a{
+  text-decoration: none;
+  color: #353b48;
+}
+
+.postHeader a:hover, .postHeader a:focus, .postHeader a:active{
+  color: #e74c3c;
+  text-decoration: none;
+}
+
+.descriptionArea{
+  color: #353b48;
+}
+
+/*******************************************
+SIDENAV
+*******************************************/
+
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    overflow-x: hidden;
+    transition: 0.5s;
+    background: #1f232b;
+}
+
+.sidenav .left{
+  width: 250px;
+  height: 100%;
+  background-color: #1f232b;
+}
+
+.mobileHeader{
+  display: none;
+    border-bottom: 3px white solid;
+}
+
+.mobileHeader .col-xs-8{
+  color: white;
+  font-size: 30px;
+  
+  padding: 10px;
+}
+
+.mobileHeader .col-xs-8 b{
+ color: #e74c3c;
+}
+
+.mobileHeader .col-xs-4 span{
+  float: right;
+  color: #e74c3c;
+  padding: 10px;
+}
+
+.sidenav .right{
+  width: 100%;
+}
+
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 50px;
+    margin-left: 50px;
+    color: #e74c3c;
+}
+
+.closebtn:hover, .closebtn:focus {
+ text-decoration: none; 
+}
+
+
+.openButton{
+  font-size: 30px;
+}
+
+
+.modal-dialog{
+  width: 50%;
+  margin: 30px auto;
+}
+
+.postModal{
+  width: 80% !important;
+}
+
+/**************************************
+PAGINATION
+**************************************/
+.pagination li a{
+  color: #eee !important;
+  background-color:  #1f232b !important;
+  border-color: #eee !important;
+  font-size: 14px !important;
+  line-height: 20px;
+  font-family: Arial;
+  z-index: 0 !important;
+}
+
+.pagination .active a{
+  background-color: #e74c3c !important;
+  color: #1f232b !important;
+}
+
+.pagination .active a:hover{
+  background-color: #e74c3c !important;
+  color: #1f232b !important;
+}
+
+.pagination .disabled a{
+  background-color: #353b48 !important;
+  color: #888 !important;
+} 
+
+.pagination li a:hover{
+  background-color: #e74c3c !important;
+}
+/****************************/
+
+@media (min-width: 1025px) and (max-width: 1440px) { 
+  .postLinks{
+    width: 33.3%;
+  }
+  
+  .seasonSelector {
+    width: 90% !important;
+    height: 32px;
+    font-size: 16px;
+  }
+}
+
+
+
+@media (min-width: 769px) and (max-width: 1024px) { 
+  .postLinks{
+    width: 50%;
+  }
+  
+  .seasonButton{
+    font-size: 16px;
+    font-weight: 600;
+  }
+  
+  .seasonSelector {
+    width: 90% !important;
+    height: 32px;
+    font-size: 16px;
+  }
+  
+  .modal-dialog{
+    width: 90%;
+    margin: 30px auto;
+  }
+  
+  .postModal{
+    width: 90% !important;
+    margin: 30px auto;
+  }
+
+}
+
+@media (min-width: 721px) and (max-width: 768px) { 
+  .postLinks{
+       width: 95%;
+    margin: 3px 2.5%;
+  }
+  
+  .seasonButtonHolder{
+    max-width: 100%;
+  }
+  
+  .seasonSelector {
+    width: 90% !important;
+    height: 32px;
+    font-size: 16px;
+  }
+  
+  .seasonButton{
+    font-size: 16px;
+    font-weight: 600;
+  }
+  
+  .modal-dialog{
+    width: 90%;
+    margin: 30px auto;
+  }
+  
+  .postModal{
+    width: 90% !important;
+    margin: 30px auto;
+  }
+}
+
+@media (min-width: 601px) and (max-width: 720px) { 
+  .postLinks{
+    width: 95%;
+    margin: 3px 2.5%;
+  }
+  
+  .mobileHeader{
+    display: block;
+  }
+  
+  .welcomeBanner{
+    display: none;
+  }
+  
+  .modal-dialog{
+    width: 90%;
+    margin: 30px auto;
+  }
+  
+  .postModal{
+    width: 90% !important;
+    margin: 30px auto;
+  }  
+  
+  .seasonButtonHolder{
+    max-width: 100%;
+  }
+  
+  .seasonSelector {
+    width: 90% !important;
+    height: 32px;
+    font-size: 16px;
+  }
+  
+  .seasonButton{
+    font-size: 16px;
+    width:20%;
+    font-weight: 600;
+  }
+  
+    .col-xs-3{
+    display: none;
+  }
+  
+  .col-xs-9{
+    width: 100%;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 600px) { 
+  .postLinks{
+    width: 95%;
+    margin: 3px 2.5%;
+  }
+
+  .modal-dialog{
+    width: 90%;
+    margin: 30px auto;
+  }
+  
+  .postModal{
+    width: 90% !important;
+    margin: 30px auto;
+  }
+  
+  .mobileHeader{
+    display: block;
+  }
+  
+  .welcomeBanner{
+    display: none;
+  }
+  
+  .seasonButtonHolder{
+    max-width: 100%;
+  }
+  
+  .seasonSelector {
+    width: 90% !important;
+    height: 32px;
+    font-size: 16px;
+  }
+  
+  .seasonButton{
+    font-size: 16px;
+    width:20%;
+    font-weight: 600;
+  }
+  
+  .col-xs-3{
+    display: none;
+  }
+  
+  .col-xs-9{
+    width: 100%;
+  }
+}
+
+@media (min-width: 401px) and (max-width: 480px) { 
+  .postLinks{
+    width: 95%;
+    margin: 3px 2.5%;
+  }
+
+  .pageNumberGrp{
+    display: none !important;
+  }  
+  
+    .modal-dialog{
+    width: 90%;
+    margin: 30px auto;
+  }
+  
+  .postModal{
+    width: 90% !important;
+    margin: 30px auto;
+  }
+  
+  
+    .mobileHeader{
+    display: block;
+  }
+  
+  .welcomeBanner{
+    display: none;
+  }
+  
+  .seasonButtonHolder{
+    max-width: 100%;
+  }
+  
+  .seasonSelector {
+    width: 90% !important;
+    height: 32px;
+    font-size: 16px;
+  }
+  
+  .seasonButton{
+    font-size: 16px;
+    width:20%;
+    font-weight: 600;
+  }
+  
+  .col-xs-3{
+    display: none;
+  }
+  
+  .col-xs-9{
+    width: 100%;
+  }
+
+  .welcomeH1{
+    font-size: 24px;
+    line-height: 30px;
+    padding-top: 10px;
+  } 
+}
+
+
+@media (min-width: 361px) and (max-width: 400px) { 
+  .postLinks{
+    width: 95%;
+    margin: 3px 2.5%;
+  }
+   .modal-dialog{
+    width: 90%;
+    margin: 30px auto;
+  }
+
+  .pageNumberGrp{
+    display: none !important;
+  }
+  
+  .postModal{
+    width: 90% !important;
+    margin: 30px auto;
+  } 
+  .mobileHeader{
+    display: block;
+  }
+  
+  .mobileHeader .col-xs-8{
+    font-size: 24px;
+    padding: 10px 10px 5px 10px;
+  }
+  
+  .openButton {
+    font-size: 24px;
+  }
+  
+  .mobileHeader .col-xs-4{
+    font-size: 24px;
+  }
+  
+  .welcomeBanner{
+    display: none;
+  }
+  
+  .seasonButtonHolder{
+    max-width: 100%;
+  }
+  
+  .seasonSelector {
+    width: 90% !important;
+    height: 32px;
+    font-size: 16px;
+  }
+  
+  .seasonButton{
+    font-size: 16px;
+    width:20%;
+    font-weight: 600;
+  }
+  
+  .col-xs-3{
+    display: none;
+  }
+  
+  .col-xs-9{
+    width: 100%;
+  }
+  
+  .welcomeH1{
+    font-size: 24px;
+    line-height: 30px;
+  } 
+}
+
+@media (min-width: 321px) and (max-width: 360px) { 
+  .postLinks{
+    width: 95%;
+    margin: 3px 2.5%;
+    height: 250px;
+  }
+
+  .pageNumberGrp{
+    display: none !important;
+  }  
+
+  .modal-dialog{
+    width: 90%;
+    margin: 30px auto;
+  }
+  
+  .postModal{
+    width: 90% !important;
+    margin: 30px auto;
+  }
+  
+    .mobileHeader{
+    display: block;
+  }
+  
+  .mobileHeader .col-xs-8{
+    font-size: 24px;
+    padding: 10px 10px 5px 10px;
+  }
+  
+  .openButton {
+    font-size: 24px;
+  }
+  
+  .mobileHeader .col-xs-4{
+    font-size: 24px;
+  }
+  
+    .welcomeBanner{
+    display: none;
+  }
+  
+  .seasonButtonHolder{
+    max-width: 100%;
+  }
+  
+  .seasonSelector {
+    width: 90% !important;
+    height: 32px;
+    font-size: 16px;
+  }
+  
+  .seasonButton{
+    font-size: 16px;
+    width:20%;
+    font-weight: 600;
+  }
+  
+  .col-xs-3{
+    display: none;
+  }
+  
+  .col-xs-9{
+    width: 100%;
+  }
+  
+  .welcomeH1{
+    font-size: 24px;
+    line-height: 30px;
+  } 
+}
+
+
+
+@media screen and (max-width: 320px) { 
+  .postLinks{
+    width: 95%;
+    margin: 3px 2.5%;
+    height: 250px;
+  }
+  
+  .pageNumberGrp{
+    display: none !important;
+  }
+  
+  .mobileHeader{
+    display: block;
+  }
+   .modal-dialog{
+    width: 90%;
+    margin: 30px auto;
+  }
+  
+  .postModal{
+    width: 90% !important;
+    margin: 30px auto;
+  } 
+  .mobileHeader .col-xs-8{
+    font-size: 16px;
+    padding: 10px 10px 5px 10px;
+  }
+  
+  .openButton {
+    font-size: 16px;
+  }
+  
+  .mobileHeader .col-xs-4{
+    font-size: 24px;
+  }
+  
+    .welcomeBanner{
+    display: none;
+  }
+  
+  .seasonButtonHolder{
+    max-width: 100%;
+  }
+  
+  .seasonSelector {
+    width: 90% !important;
+    height: 32px;
+    font-size: 16px;
+  }
+  
+  .seasonButton{
+    font-size: 16px;
+    width:20%;
+    font-weight: 600;
+  }
+  
+  .col-xs-3{
+    display: none;
+  }
+  
+  .col-xs-9{
+    width: 100%;
+  }
+  
+  .welcomeH1{
+    font-size: 24px;
+    line-height: 30px;
+  } 
+}
+
+
